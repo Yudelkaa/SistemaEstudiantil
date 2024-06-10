@@ -1,0 +1,67 @@
+﻿namespace SistemaEstudiantil.wwwroot.css
+
+.header-color {
+    color: #03045E;
+}
+
+.subheader-color {
+    color: #023E8A;
+}
+
+.text-primero {
+    color: #0077B6;
+}
+
+.text-segundo {
+    color: #0096C7;
+}
+
+.text-tercero {
+    color: #00B4D8;
+}
+
+
+.bg-header {
+    background-color: #03045E;
+    color: white; 
+}
+
+.bg-subheader {
+    background-color: #023E8A;
+    color: white; 
+}
+
+.bg-primary {
+    background-color: #0077B6;
+    color: white; 
+}
+
+.bg-secondary {
+    background-color: #0096C7;
+    color: white; 
+}
+
+.bg-tertiary {
+    background-color: #00B4D8;
+    color: black; 
+}
+
+.bg-quaternary {
+    background-color: #48CAE4;
+    color: black; 
+}
+
+.bg-quinary {
+    background-color: #90E0EF;
+    color: black; 
+}
+
+.bg-senary {
+    background-color: #ADE8F4;
+    color: black; 
+}
+
+.bg-septenary {
+    background-color: #CAF0F8;
+    color: black; 
+}
