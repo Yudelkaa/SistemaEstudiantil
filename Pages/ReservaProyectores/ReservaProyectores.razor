@@ -1,0 +1,99 @@
+﻿@page "/Reservaciones"
+
+<div class="filter-section">
+    <h2 class="mb-2">Reservaciones para Salas de Clases</h2>
+    <div class="div-flex">
+        <label>
+            <input type="checkbox" @onchange="UpdateProjectorFilter" />
+            Proyectores
+        </label>
+        <label>
+            <input type="checkbox" @onchange="UpdateLabFilter" />
+            Laboratorios
+        </label>
+        <button @onclick="ResetFilters" class="btn" style="background-color: #90E0EF;color: black; ">
+            Restablecer filtros
+        </button>
+    </div>
+</div>
+
+
+<div class="product-section">
+    
+    <div class="products">
+        @foreach (var product in filteredProducts)
+        {
+            <div class="product-card">
+                <img src="@product.ImageUrl" alt="@product.Name" />
+                <h3>@product.Name</h3>
+                <button>Reservar</button>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private bool filterProjectors = false;
+    private bool filterLabs = false;
+    private List<Product> products;
+    private List<Product> filteredProducts;
+
+    protected override void OnInitialized()
+    {
+        // Inicializar la lista de productos
+        products = new List<Product>
+        {
+            new Product { Name = "Proyector BrightLink 685Wi+", ImageUrl = "/preview.jpg", Category = "Projector" },
+            new Product { Name = "Proyector Láser Inalámbrico PowerLite EB-750F", ImageUrl = "/preview.jpg", Category = "Projector" },
+            new Product { Name = "Proyector Láser Inalámbrico PowerLite L200SW", ImageUrl = "/preview.jpg", Category = "Projector" },
+            new Product { Name = "Laboratorio A de ingeniería en sistemas", ImageUrl = "/innovative-futuristic-classroom-students.jpg", Category = "Lab" },
+            new Product { Name = "Laboratorio B de ingeniería en sistemas", ImageUrl = "/innovative-futuristic-classroom-students.jpg", Category = "Lab" },
+            new Product { Name = "Laboratorio B de ingeniería en sistemas", ImageUrl = "/innovative-futuristic-classroom-students.jpg", Category = "Lab" },
+            new Product { Name = "Laboratorio B de ingeniería en sistemas", ImageUrl = "/innovative-futuristic-classroom-students.jpg", Category = "Lab" },
+            new Product { Name = "Laboratorio B de ingeniería en sistemas", ImageUrl = "/innovative-futuristic-classroom-students.jpg", Category = "Lab" },
+            new Product { Name = "Laboratorio B de ingeniería en sistemas", ImageUrl = "/innovative-futuristic-classroom-students.jpg", Category = "Lab" }
+        };
+
+        filteredProducts = new List<Product>(products);
+    }
+
+    private void UpdateProjectorFilter(ChangeEventArgs e)
+    {
+        filterProjectors = (bool)e.Value;
+        ApplyFilters();
+    }
+
+    private void UpdateLabFilter(ChangeEventArgs e)
+    {
+        filterLabs = (bool)e.Value;
+        ApplyFilters();
+    }
+
+    private void ApplyFilters()
+    {
+        if (!filterProjectors && !filterLabs)
+        {
+            filteredProducts = new List<Product>(products);
+        }
+        else
+        {
+            filteredProducts = products.Where(p =>
+                (filterProjectors && p.Category == "Projector") ||
+                (filterLabs && p.Category == "Lab")).ToList();
+        }
+    }
+
+    private void ResetFilters()
+    {
+        filterProjectors = false;
+        filterLabs = false;
+        filteredProducts = new List<Product>(products);
+    }
+
+    public class Product
+    {
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
+        public string Category { get; set; }
+    }
+}

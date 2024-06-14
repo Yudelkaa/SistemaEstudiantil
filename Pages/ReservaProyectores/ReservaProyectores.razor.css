@@ -1,0 +1,60 @@
+﻿.filter-section {
+    background-color: #023E8A;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.div-flex{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.product-section {
+    display:flex;
+    flex-flow:column;
+    align-items:center;
+    padding: 20px;
+    max-width:80%;
+    margin:auto;
+
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.product-card {
+    width: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+    .product-card img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .product-card h3 {
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
+
+    .product-card button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        .product-card button:hover {
+            background-color: #0056b3;
+        }

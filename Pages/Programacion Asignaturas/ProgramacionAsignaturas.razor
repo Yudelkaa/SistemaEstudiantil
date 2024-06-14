@@ -1,0 +1,39 @@
+﻿@page "/ProgramacionAsignaturas"
+
+<body>
+    <div class="header_flex">
+        <h1 class="Titulo ">Programacion de asignaturas</h1>
+    </div>
+    <div class="container">
+        <div class="button-flex mb-3">
+            <button @onclick="AddAccordion" class="btn" style="background-color: #0077B6;color: white; ">
+                Crear Materia
+            </button>
+        </div>
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            @foreach (var accordion in accordions)
+            {
+                <div class="mb-2">
+                    <Accordion Id="@accordion.Id" NombreMateria="@accordion.NombreMateria" />
+                </div>
+            }
+        </div>
+    </div>
+</body>
+
+@code {
+    private List<AccordionModel> accordions = new List<AccordionModel>();
+    private int accordionCounter = 0;
+
+    private void AddAccordion()
+    {
+        accordions.Add(new AccordionModel { Id = accordionCounter++, NombreMateria = "Nueva Materia" });
+    }
+
+    public class AccordionModel
+    {
+        public int Id { get; set; }
+        public string NombreMateria { get; set; }
+    }
+}
