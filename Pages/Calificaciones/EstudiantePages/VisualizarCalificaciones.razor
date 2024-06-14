@@ -1,0 +1,92 @@
+﻿@page "/Estudiante/VerCalificaciones"
+
+<pageTitle>Historial de Calificaciones</pageTitle>
+<div>
+    @*Datos del Estudiante*@
+    <div class="col-md-3 ms-auto mb-1">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text text-center"><span class="bi bi-person h2"></span><strong> Juan Perez</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="shadow-lg">
+            @*Header*@
+            <div class="card-header bg-header text-white text-center">
+                <h2>Mis Calificaciones</h2>
+            </div>
+            @*Body*@
+            <div class="card-body">
+                <div class="row mb-3">
+                    @*Filtro Periodos*@
+                    <div class="col-md-6 d-flex align-items-end">
+                        <div>
+                            <label for="filtro">Seleccione el Período:</label>
+                            <select class="form-select">
+                                <option>General</option>
+                                <option>P1-24</option>
+                                <option>P2-24</option>
+                                <option>P3-24</option>
+                            </select>
+                        </div>
+                        <div class="ms-2">
+                            <label for="buscar" class="d-block invisible">Buscar:</label>
+                            <button class="btn btn-outline-dark bi bi-search"> Buscar</button>
+                        </div>
+                    </div>
+
+                </div>
+                <table class="table table-bordered">
+                    <thead class="text-center bg-secondary">
+                        <tr>
+                            <th>Código</th>
+                            <th>Asignatura</th>
+                            <th>Créditos</th>
+                            <th>Calificación</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr>
+                            <td>ING-012</td>
+                            <td>Programación 3</td>
+                            <td>4</td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>ING-015</td>
+                            <td>Inteligencia Artificial 1</td>
+                            <td>3</td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>ING-01</td>
+                            <td>Ciberseguridad 2</td>
+                            <td>3</td>
+                            <td>B</td>
+                        </tr>
+                        <tr>
+                            <td>CONT-001</td>
+                            <td>Macroeconomía</td>
+                            <td>3</td>
+                            <td>A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            @*Footer*@
+            <div class="card-footer d-flex justify-content-center">
+                <div class="me-3">
+                    <div class="bi bi-bookmark-plus-fill">Índice del Período: 3.85</div>
+                </div>
+                <div>
+                    <div class="bi bi-bookmark-star-fill">Índice General: 4.0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+}
