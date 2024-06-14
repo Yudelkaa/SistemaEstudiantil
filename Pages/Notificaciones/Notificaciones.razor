@@ -1,0 +1,215 @@
+﻿@page "/notificaciones"
+
+<PageTitle>Notificaciones</PageTitle>
+
+<div class="container mt-4">
+    <h2 class="bg-header text-center" style="padding: 5px 0;">Mensajes</h2>
+
+    <div class="row align-items-center justify-content-around mb-3">
+        <div class="col-auto">
+            <label class="">Filtrar por Estado de Notificación:</label>
+        </div>
+        <div class="col-auto">
+            <select class="form-select" @bind="filtroEstadoNotificacion">
+                <option value="all">Todas</option>
+                <option value="read">Leídas</option>
+                <option value="deleted">Eliminadas</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="list-group">
+        @foreach (var notification in GetFilteredNotifications())
+        {
+            <div class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <img src="https://placehold.co/50x50" alt="User Avatar" class="rounded-circle me-3">
+                    <div>
+                        <h5 class="mb-1">@notification.SenderName</h5>
+                        <p class="mb-1 text-muted">@notification.Message</p>
+                    </div>
+                </div>
+                <div class="btn-group" role="group">
+                    @if (!notification.IsRead && !notification.IsDeleted)
+                    {
+                        <button class="btn btn-success" @onclick="() => MarkAsRead(notification)">Leído</button>
+                    }
+                    <button class="btn btn-danger" @onclick="() => DeleteNotificationWithModal(notification)">Eliminar</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@if (notificationToDelete != null)
+{
+    <div class="modal-backdrop show"></div>
+    <div class="modal d-block autoridad">
+        <div class="position-fixed top-50 start-50 translate-middle" style="width: 28rem; z-index: 1050;">
+            <div class="modal-content" style="border-radius: 25px;">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Confirmar Eliminación de Notificación</h5>
+                    <button type="button" class="btn-close" aria-label="Close" @onclick="CloseDeleteModal"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <p>
+                            ¿Está seguro de que desea eliminar la notificación de <span class="fw-bold">@notificationToDelete.SenderName</span>?
+                        </p>
+                        <p class="text-muted">@notificationToDelete.Message</p>
+                        <button class="btn btn-danger" @onclick="ConfirmDeleteNotification">Confirmar</button>
+                        <button class="btn btn-secondary" @onclick="CloseDeleteModal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private List<Notification> notifications = new List<Notification>
+    {
+        new Notification
+        {
+            Id = 1,
+            SenderName = "Administrador",
+            Message = "Se ha actualizado la política de privacidad, por favor revise los nuevos términos.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 2,
+            SenderName = "Administrador",
+            Message = "Hay una nueva promoción activa, revise los detalles en su cuenta.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 3,
+            SenderName = "Administrador",
+            Message = "Se ha programado un mantenimiento del sistema el próximo fin de semana.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 4,
+            SenderName = "Administrador",
+            Message = "Felicidades, ha sido seleccionado para participar en un sorteo especial.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 5,
+            SenderName = "Administrador",
+            Message = "Se ha actualizado el catálogo de servicios, revise las novedades.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 6,
+            SenderName = "Administrador",
+            Message = "Recuerde que tiene una factura pendiente de pago, por favor realice el pago a la brevedad.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 7,
+            SenderName = "Administrador",
+            Message = "Hay problemas con su método de pago, por favor actualice su información de tarjeta.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 8,
+            SenderName = "Administrador",
+            Message = "Se han aplicado nuevos descuentos a su suscripción, revise los beneficios.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 9,
+            SenderName = "Administrador",
+            Message = "Hemos mejorado la experiencia de usuario en nuestra plataforma, pruébela ahora.",
+            IsRead = false,
+            IsDeleted = false
+        },
+        new Notification
+        {
+            Id = 10,
+            SenderName = "Administrador",
+            Message = "Gracias por su preferencia, le recordamos nuestros horarios de atención.",
+            IsRead = false,
+            IsDeleted = false
+        }
+    };
+
+    private string filtroEstadoNotificacion = "all";
+
+    private List<Notification> GetFilteredNotifications()
+    {
+        var filteredNotifications = notifications;
+
+        switch (filtroEstadoNotificacion)
+        {
+            case "all":
+                filteredNotifications = filteredNotifications.Where(n => !n.IsDeleted).ToList();
+                break;
+            case "read":
+                filteredNotifications = filteredNotifications.Where(n => n.IsRead && !n.IsDeleted).ToList();
+                break;
+            case "deleted":
+                filteredNotifications = filteredNotifications.Where(n => n.IsDeleted).ToList();
+                break;
+        }
+
+        return filteredNotifications;
+    }
+
+    private void MarkAsRead(Notification notification)
+    {
+        notification.IsRead = true;
+    }
+
+    private void DeleteNotification(Notification notification)
+    {
+        notification.IsDeleted = true;
+    }
+
+    private Notification? notificationToDelete;
+
+    private void DeleteNotificationWithModal(Notification notification)
+    {
+        notificationToDelete = notification;
+    }
+
+    private void ConfirmDeleteNotification()
+    {
+        if (notificationToDelete != null)
+        {
+            DeleteNotification(notificationToDelete);
+            notificationToDelete = null;
+        }
+    }
+
+    private void CloseDeleteModal()
+    {
+        notificationToDelete = null;
+    }
+
+    public class Notification
+    {
+        public int Id { get; set; }
+        public string? SenderName { get; set; }
+        public string? Message { get; set; }
+        public bool IsRead { get; set; }
+        public bool IsDeleted { get; set; }
+    }
+}
