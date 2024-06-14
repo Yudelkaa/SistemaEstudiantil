@@ -4,13 +4,17 @@
             <div class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-@Id" aria-expanded="false" aria-controls="flush-collapse-@Id" style="margin-right:5px">
                 <h5>@NombreMateria</h5>
             </div>
-            <button class="btn btn-success" style="margin-right:20px" @onclick="ShowEditModal">Editar</button>
+            <button class="btn" style="margin-right:20px; background-color: #0077B6; color: white;  " @onclick="ShowEditModal">
+                Editar
+            </button>
         </div>
     </div>
 
     <div id="flush-collapse-@Id" class="accordion-collapse collapse border collapse-center" data-bs-parent="#accordionFlushExample" style="width:95%; margin:auto;">
         <div class="accordion-body">
-            <button @onclick="AgregarSeccion" class="btn btn-primary" style="margin:8px;">Crear Sección</button>
+            <button @onclick="AgregarSeccion" class="btn " style="margin:8px;  background-color: #0077B6;color: white; ">
+                Crear Sección
+            </button>
             @foreach (var subAccordion in SubAccordions)
             {
                 <div class="accordion accordion-flush" id="accordionFlushExample-@subAccordion.Id">
@@ -20,7 +24,9 @@
                                 <div class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-@subAccordion.Id" aria-expanded="false" aria-controls="flush-collapse-@subAccordion.Id" style="display:flex; align-items:center; justify-content:space-between; margin-right:5px">
                                     <h5>@subAccordion.NombreSeccion</h5>
                                 </div>
-                                <button class="btn btn-success" style="margin-right:20px" @onclick="() => ShowEditSubMenuModal(subAccordion.Id)">Editar</button>
+                                <button class="btn " style="margin-right:20px; background-color: #0077B6; color: white; " @onclick="() => ShowEditSubMenuModal(subAccordion.Id)">
+                                    Editar
+                                </button>
                             </div>
                         </div>
                         <div id="flush-collapse-@subAccordion.Id" class="accordion-collapse collapse border collapse-center" data-bs-parent="#accordionFlushExample-@subAccordion.Id" style="width:95%; margin:auto;">
