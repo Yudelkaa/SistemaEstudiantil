@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\facturacion Estudiantes\FacturacionEstudiante.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Pages\facturacion Estudiantes\FacturacionEstudiante.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.4" PrivateAssets="all" />
   </ItemGroup>
