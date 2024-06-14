@@ -1,0 +1,105 @@
+﻿@page "/Docente/ConsultaCalificaciones"
+
+<div class="top-row px-4 text-end">
+    <p class="bi bi-person-fill">Docente</p>
+</div>
+
+<div class="container">
+    <div class="card shadow-lg">
+        @*Header*@
+        <div class="card-header text-center bg-subheader">
+            <h2><strong>Listado de Estudiantes</strong></h2>
+        </div>
+        @*Body*@
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <label class="form-label mr-2"><strong>Cursos</strong></label>
+                    <select class="form-select form-control">
+                        <option value="">Seleccione Curso</option>
+                        <option value="1">F&iacute;sica I</option>
+                        <option value="2">F&iacute;sica II</option>
+                        <option value="3">F&iacute;sica III</option>
+                    </select>
+                </div>
+                <div class="table-container text-center shadow-lg">
+                    <table class="tableAux table-bordered">
+                        <thead class="bg-secondary text-white">
+                            <tr>
+                                <th>D&iacute;as y Horas</th>
+                                <th>Aula</th>
+                                <th>Docente</th>
+                                <th>Semestre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Viernes 6/10pm</td>
+                                <td>C-301</td>
+                                <td>Rafael Antonio Taveras Pantale&oacute;n</td>
+                                <td>2-2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="text-center">
+                <table class="table table-bordered mt-3 bg-subheader">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Matr&iacute;cula</th>
+                            <th>Calificaci&oacute;n</th>
+                            <th>Calificar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-info">
+                        <tr>
+                            <td>1</td>
+                            <td>Cristopher</td>
+                            <td>Marte Blanco</td>
+                            <td>2021-0551</td>
+                            <td>A</td>
+                            <td><button type="button" class="btn-info bi bi-journal-bookmark"></button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Yudelka</td>
+                            <td>Guill&eacute;n</td>
+                            <td>2021-2291</td>
+                            <td>A</td>
+                            <td><button type="button" class="btn-info bi bi-journal-bookmark"></button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>&Aacute;ngel Luis</td>
+                            <td>Gonz&aacute;lez</td>
+                            <td>2022-1902</td>
+                            <td>B+</td>
+                            <td><button type="button" class="btn-info bi bi-journal-bookmark"></button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Brailyn</td>
+                            <td>V&aacute;squez</td>
+                            <td>2021-0013</td>
+                            <td>B+</td>
+                            <td><button type="button" class="btn-info bi bi-journal-bookmark"></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @*Footer*@
+        <div class="card-footer">
+            <p><strong>Total de Estudiantes inscritos: </strong>4</p>
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+}
