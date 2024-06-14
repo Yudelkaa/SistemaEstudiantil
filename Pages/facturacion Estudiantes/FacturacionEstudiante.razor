@@ -130,6 +130,7 @@
         new Link {id= 3, Name = "Patric", Url = "/FacturacionEstudiante" },
         new Link {id= 4, Name = "Patric", Url = "/FacturacionEstudiante"},
         new Link {id= 5, Name = "Deuda", Url = "/FacturacionEstudiante"},
+        new Link {id= 5, Name = "Horario de clases", Url = "/HorarioClases"},
     };
 
     public List<Deudas> ListaDeudas { get; set; } = new List<Deudas>
@@ -250,6 +251,11 @@
             MostrarDeudas = false;
         }
         else if (selectedLink.id == 5)
+        {
+            MostrarDeudas = true;
+            mostrarTablaNueva = false;
+        }
+        else if (selectedLink.id == 6)
         {
             MostrarDeudas = true;
             mostrarTablaNueva = false;
