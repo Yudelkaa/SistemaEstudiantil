@@ -1,0 +1,141 @@
+﻿@page "/Retiro"
+<PageTitle>Retiros</PageTitle>
+
+<div class="container">
+    <div class="card shadow-lg">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="3">
+                        Semestre 2-2024
+                        <button class="btn bg-primary" @onclick="MostrarClases">Retirar Materia</button>
+                        <button class="btn bg-secondary" @onclick="SeeModalSemestre">Retirar Semestre</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (mostrandoClases)
+                {
+                    @foreach (var clase in ListaClase)
+                    {
+                        <tr class="text-center">
+                            <td>@clase.Clave</td>
+                            <td>@clase.Asignatura</td>
+                            <td><button class="btn btn-danger" @onclick="()=>SeeModal(clase)">Retirar</button></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (infoClick)
+{
+    <div class="modal-backdrop show"></div>
+    <div class="modal d-block autoridad">
+        <div class="position-fixed top-50 start-50 translate-middle" style="width: 28rem; z-index: 1050;">
+            <div class="modal-content" style="border-radius: 25px;">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Confirmar Retiro</h5>
+                    <button type="button" class="btn-close" aria-label="Close" @onclick="ModalOut"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <p>
+                            ¿Está seguro de que desea retirar la asignatura @claseSeleccionada?.Asignatura (Clave: @claseSeleccionada?.Clave)?
+                        </p>
+                        <button class="btn btn-danger" @onclick="()=>ConfirmarRetiro(claseSeleccionada)">Confirmar</button>
+                        <button class="btn btn-secondary" @onclick="ModalOut">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (semestreClick)
+{
+    <div class="modal-backdrop show"></div>
+    <div class="modal d-block autoridad">
+        <div class="position-fixed top-50 start-50 translate-middle" style="width: 28rem; z-index: 1050;">
+            <div class="modal-content" style="border-radius: 25px;">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Confirmar Retiro de Semestre</h5>
+                    <button type="button" class="btn-close" aria-label="Close" @onclick="ModalOut"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <p>
+                            ¿Está seguro de que desea retirar el semestre completo?
+                        </p>
+                        <button class="btn btn-danger" @onclick="ConfirmarRetiroSemestre">Confirmar</button>
+                        <button class="btn btn-secondary" @onclick="ModalOut">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    public bool mostrandoClases = false;
+    public List<Clase> ListaClase { get; set; } = new List<Clase>
+    {
+        new Clase { Clave = "001", Asignatura = "Lengua Española"},
+        new Clase { Clave = "002", Asignatura = "Orientacion Academica"},
+        new Clase { Clave = "003", Asignatura = "Filosofia"},
+        new Clase { Clave = "004", Asignatura = "Programación III"},
+        new Clase { Clave = "005", Asignatura = "Laboratorio De Programación III"}
+    };
+    public Clase? claseSeleccionada { get; set; }
+
+    public void MostrarClases()
+    {
+        mostrandoClases = true;
+    }
+
+    public void RetirarClase(Clase clase)
+    {
+        ListaClase.Remove(clase);
+        ModalOut();
+    }
+
+    private bool infoClick = false;
+    private bool semestreClick = false;
+
+    private void SeeModal(Clase clase)
+    {
+        claseSeleccionada = clase;
+        infoClick = true;
+    }
+
+    private void SeeModalSemestre()
+    {
+        semestreClick = true;
+    }
+
+    private void ConfirmarRetiro(Clase clase)
+    {
+        RetirarClase(clase);
+        ModalOut();
+    }
+
+    private void ConfirmarRetiroSemestre()
+    {
+        ListaClase.Clear();
+        ModalOut();
+    }
+
+    private void ModalOut()
+    {
+        infoClick = false;
+        semestreClick = false;
+    }
+
+    public class Clase
+    {
+        public string? Clave { get; set; }
+        public string? Asignatura { get; set; }
+    }
+}

@@ -28,25 +28,7 @@
                         <td>@clase.Costo.ToString("N2")</td>
                     </tr>
                 }
-           
-                <tr class="text-center">
-                    <td>001</td>
-                    <td>Estructuras de Datos</td>
-                    <td>4</td>
-                    <td>2024-06-01</td>
-                    <td>2024-12-15</td>
-                    <td>1500.00</td>
-                </tr>
-                <tr class="text-center">
-                    <td>002</td>
-                    <td>Programación Aplicada 2</td>
-                    <td>3</td>
-                    <td>2024-06-02</td>
-                    <td>2024-12-16</td>
-                    <td>1200.00</td>
-               
-                </tr>
-              </tbody>
+            </tbody>
         </table>
     </div>
 </div>
@@ -56,16 +38,16 @@
     public List<Clase> ListaClases { get; set; } = new List<Clase>
     {
         new Clase { Clave = "001", Asignatura = "Estructuras de Datos", Credito = 4, FechaInicio = "2024-06-01", FechaFin = "2024-12-15", Costo = 1500.00M },
-        new Clase { Clave = "002", Asignatura = "Programación Aplicada 2", Credito = 3, FechaInicio = "2024-06-02", FechaFin = "2024-12-16", Costo = 1200.00M },
-        new Clase { Clave = "003", Asignatura = "Proyecto Aplicado", Credito = 3, FechaInicio = "2024-06-02", FechaFin = "2024-12-16", Costo = 1200.00M }
- 
+        new Clase { Clave = "003", Asignatura = "Programación Aplicada 2", Credito = 3, FechaInicio = "2024-06-02", FechaFin = "2024-12-16", Costo = 1200.00M },
+        new Clase { Clave = "010", Asignatura = "Contabilidad", Credito = 2, FechaInicio = "2024-06-02", FechaFin = "2024-12-16", Costo = 1200.00M },
+        new Clase { Clave = "005", Asignatura = "Análisis de sistema", Credito = 3, FechaInicio = "2024-06-02", FechaFin = "2024-12-16", Costo = 1200.00M },
+        new Clase { Clave = "008", Asignatura = "Cálculo vectorial", Credito = 2, FechaInicio = "2024-06-02", FechaFin = "2024-12-16", Costo = 1200.00M }
     };
 
     public class Clase
     {
         public string? Clave { get; set; }
         public string? Asignatura { get; set; }
-        public string? Fecha { get; set; }
         public int Credito { get; set; }
         public string? FechaInicio { get; set; }
         public string? FechaFin { get; set; }
