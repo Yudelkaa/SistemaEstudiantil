@@ -8,44 +8,35 @@
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="row no-gutters">
-
                     <div class="col-sm-6 bg-custom rounded-left">
-                        <div class="card h-100 imagen-card" style="background-color: #03045E;">
+                        <div class="card h-100 image-card" style="background-color: #03045E;">
                             <div class="card-body d-flex align-items-center justify-content-center">
                                 <img src="/login.png" alt="Descripción de la imagen" class="d-block mx-auto" style="width: 200px; margin-top: 20px;">
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-6 rounded-right">
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center">
-                                    <div class="mover-abajo">
-
-                                        <div class="form-group mb-3 input-espacio">
+                                    <div class="move-down">
+                                        <div class="form-group mb-3 input-space">
                                             <input type="text" class="form-control" id="usuario" placeholder="Usuario">
                                         </div>
-
-                                        <div class="form-group mb-3 contrasena-input">
+                                        <div class="form-group mb-3 password-input">
                                             <input type="password" class="form-control" id="contrasena" placeholder="Contraseña">
                                         </div>
-
                                     </div>
                                 </div>
-
                                 <div class="form-group text-center mb-3">
                                     <button type="button" class="btn btn-block btn-iniciar">Iniciar Sesión</button>
                                 </div>
-
                                 <div class="form-group text-center">
                                     <button type="button" class="btn btn-block btn-registro">Registrarse</button>
                                 </div>
-
                                 <div class="form-group text-center">
                                     <label class="mt-4">¿Olvidó su contraseña?</label>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -65,7 +56,6 @@
         padding: 3px 10px;
         font-size: 16px;
         margin-top: 5px;
-        margin-bottom: 10px;
     }
 
     .btn-iniciar {
@@ -78,6 +68,8 @@
         background-color: #0077B6;
         color: #fff;
         margin-bottom: 0px;
+        font-size: 14px;
+        padding: 3px 8px;
     }
 
     .form-control {
@@ -88,7 +80,7 @@
         background-color: transparent;
     }
 
-    .mover-abajo {
+    .move-down {
         margin-top: 50px;
     }
 
@@ -96,7 +88,7 @@
         border: none;
     }
 
-    .imagen-card {
+    .image-card {
         min-height: 60vh;
         background-color: #03045E;
         margin-bottom: 10px;
@@ -105,19 +97,19 @@
         align-items: center;
     }
 
-        .imagen-card .card-body {
+        .image-card .card-body {
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-    .input-espacio {
+    .input-space {
         margin-bottom: 10px;
         text-align: center;
     }
 
-    .input-contrasena {
+    .password-input {
         margin-bottom: 20px;
         text-align: center;
     }
