@@ -1,0 +1,27 @@
+﻿
+.header_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Titulo {
+    padding: 20px 30px;
+    font-size: 28px;
+}
+
+.container {
+    padding: 30px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.accordion, .button-flex {
+    width: 85%;
+}
+
+.collapse-center {
+    margin: auto;
+}
