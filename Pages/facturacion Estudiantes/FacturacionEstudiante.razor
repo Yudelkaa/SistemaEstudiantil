@@ -1,0 +1,269 @@
+﻿@page "/FacturacionEstudiante"
+@using System.Collections.Generic
+
+<PageTitle>Home</PageTitle>
+
+<nav class="nav nav-pills flex-column flex-sm-row">
+    @foreach (var link in Links)
+    {
+        <a @onclick="@(() => OnLinkClick(link))"
+           class="@(link.IsActive ? "nav-link active" : "nav-link")"
+           href="@link.Url">
+            @link.Name
+        </a>
+    }
+</nav>
+
+<div class="container mt-3">
+    @if (!mostrarTablaNueva && !MostrarDeudas)
+    {
+        <div style="display:flex; align-items:center; justify-content:space-around">
+            <div>
+                <label class="">Filtrar por Estado de Pago:</label>
+            </div>
+            <div class="col-4">
+                <select class="form-select" @bind="filtroEstadoPago">
+                    <option value="">Todos</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Pagado">Pagado</option>
+                </select>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered justify-content mt-3">
+            <thead Style="background-color: darkblue;">
+                <tr class="text-center bg-header ">
+                    <th class="text-white">Semestre</th>
+                    <th class="text-white">Monto a pagar</th>
+                    <th class="text-white">Saldo pendiente</th>
+                    <th class="text-white">Estado de pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var semestre in ListaClasesFiltradas)
+                {
+                    <tr class="text-center">
+                        <td>@semestre.Semestre</td>
+                        <td>@semestre.Monto_pagar</td>
+                        <td>@semestre.Saldo_pendiente</td>
+                        <td>@semestre.Estado_pago</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    @if (mostrarTablaNueva)
+    {
+        <div style="display:flex; align-items:center; ">
+            <div>
+                <label class="">Filtrar por Semestre:</label>
+            </div>
+            <div>
+                <select class="form-select" @bind="filtroSemestre">
+                    <option value="">Todos</option>
+                    @foreach (var semestre in SemestresDisponibles)
+                    {
+                        <option value="@semestre">@semestre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered justify-content mt-3">
+            <thead Style="background-color: darkblue;">
+                <tr class="text-center bg-header">
+                    <th class="text-white">Semestre</th>
+                    <th class="text-white">Monto</th>
+                    <th class="text-white">Método de pago</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var historial in ListaHistorialPagoFiltrados)
+                {
+                    <tr class="text-center">
+                        <td>@historial.Semestre</td>
+                        <td>@historial.Monto</td>
+                        <td>@historial.MetodoPago</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    @if (MostrarDeudas && !mostrarTablaNueva || MostrarDeudas && mostrarTablaNueva)
+    {
+        <div class="container mt-3">
+            <table class="table table-striped table-bordered justify-content mt-3">
+                <thead Style="background-color: darkblue;">
+                    <tr class="text-center bg-header">
+                        <th class="text-white">Cuota</th>
+                        <th class="text-white">Estado</th>
+                        <th class="text-white">Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var semestre in ListaDeudasFiltradas)
+                    {
+                        <tr class="text-center">
+                            <td>@semestre.Cuota</td>
+                            <td>@semestre.Estado</td>
+                            <td>
+                                <a class="btn btn-primary" href="/Deudas" role="button">Ver Mi Deuda</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@code {
+    bool mostrarTablaNueva = false;
+    bool MostrarDeudas = false;
+    string filtroEstadoPago = "";
+    string filtroSemestre = "";
+
+    private List<Link> Links { get; set; } = new List<Link>()
+    {
+        new Link {id= 1, Name = "Estado de cuenta", Url = "/FacturacionEstudiante", IsActive = true },
+        new Link {id= 2, Name = "Historial de pago", Url = "/FacturacionEstudiante" },
+        new Link {id= 3, Name = "Patric", Url = "/FacturacionEstudiante" },
+        new Link {id= 4, Name = "Patric", Url = "/FacturacionEstudiante"},
+        new Link {id= 5, Name = "Deuda", Url = "/FacturacionEstudiante"},
+        new Link {id= 5, Name = "Horario de clases", Url = "/HorarioClases"},
+    };
+
+    public List<Deudas> ListaDeudas { get; set; } = new List<Deudas>
+    {
+        new Deudas { Cuota = "Cuota#1 Periodo 3-2024", Estado = "Pago Pendiente" },
+        new Deudas { Cuota = "Cuota#2 Periodo 3-2024", Estado = "Pago Pendiente"   },
+        new Deudas { Cuota = "Cuota#3 Periodo 3-2024", Estado = "Pago pendiente"  }
+    };
+
+    public List<SemestreEstudiante> ListaClases { get; set; } = new List<SemestreEstudiante>
+    {
+        new SemestreEstudiante { Semestre = "001", Monto_pagar = 20000, Saldo_pendiente = 15344, Estado_pago = "Pendiente" },
+        new SemestreEstudiante { Semestre = "002", Monto_pagar = 32222, Saldo_pendiente = 0, Estado_pago = "Pagado"   },
+        new SemestreEstudiante { Semestre = "003", Monto_pagar = 17000, Saldo_pendiente = 0, Estado_pago = "Pagado"  }
+    };
+
+    public List<HistorialPagos> ListaHistorial { get; set; } = new List<HistorialPagos>
+    {
+        new HistorialPagos { Semestre = "enero 3-2024", Monto = 50000 , MetodoPago = "Pago Pendiente" },
+        new HistorialPagos { Semestre = "febrero 3-2024", Monto = 80000 , MetodoPago = "Pago Pendiente"   },
+        new HistorialPagos { Semestre = "marzo 3-2024", Monto = 40000 , MetodoPago = "Pago Pendiente"  }
+    };
+
+    List<string> SemestresDisponibles => ListaHistorial.Select(h => h.Semestre).Distinct().ToList();
+
+    List<SemestreEstudiante> ListaClasesFiltradas
+    {
+        get
+        {
+            if (string.IsNullOrWhiteSpace(filtroEstadoPago))
+            {
+                return ListaClases;
+            }
+            else
+            {
+                return ListaClases.Where(semestre => semestre.Estado_pago.Equals(filtroEstadoPago, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+        }
+    }
+
+    List<HistorialPagos> ListaHistorialPagoFiltrados
+    {
+        get
+        {
+            var listaFiltrada = ListaHistorial.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(filtroEstadoPago))
+            {
+                listaFiltrada = listaFiltrada.Where(semestre => semestre.MetodoPago.Equals(filtroEstadoPago, StringComparison.OrdinalIgnoreCase));
+            }
+            if (!string.IsNullOrWhiteSpace(filtroSemestre))
+            {
+                listaFiltrada = listaFiltrada.Where(semestre => semestre.Semestre.Equals(filtroSemestre, StringComparison.OrdinalIgnoreCase));
+            }
+            return listaFiltrada.ToList();
+        }
+    }
+
+    List<Deudas> ListaDeudasFiltradas
+    {
+        get
+        {
+            if (string.IsNullOrWhiteSpace(filtroEstadoPago))
+            {
+                return ListaDeudas;
+            }
+            else
+            {
+                return ListaDeudas.Where(semestre => semestre.Estado.Equals(filtroEstadoPago, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+        }
+    }
+
+    public class Link
+    {
+        public int id { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public bool IsActive { get; set; }
+    }
+
+    public class SemestreEstudiante
+    {
+        public string Semestre { get; set; }
+        public int Monto_pagar { get; set; }
+        public int Saldo_pendiente { get; set; }
+        public string Estado_pago { get; set; }
+    }
+
+    public class Deudas
+    {
+        public string Cuota { get; set; }
+        public string Estado { get; set; }
+    }
+
+    public class HistorialPagos
+    {
+        public string Semestre { get; set; }
+        public int Monto { get; set; }
+        public string MetodoPago { get; set; }
+    }
+
+    private void OnLinkClick(Link selectedLink)
+    {
+        foreach (var link in Links)
+        {
+            link.IsActive = false;
+        }
+
+        selectedLink.IsActive = true;
+
+        if (selectedLink.id == 1)
+        {
+            mostrarTablaNueva = false;
+        }
+        if (selectedLink.id == 2)
+        {
+            mostrarTablaNueva = true;
+            MostrarDeudas = false;
+        }
+        else if (selectedLink.id == 5)
+        {
+            MostrarDeudas = true;
+            mostrarTablaNueva = false;
+        }
+        else if (selectedLink.id == 6)
+        {
+            MostrarDeudas = true;
+            mostrarTablaNueva = false;
+        }
+        else
+        {
+            mostrarTablaNueva = false;
+            MostrarDeudas = false;
+        }
+    }
+}
