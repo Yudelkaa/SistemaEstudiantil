@@ -1,0 +1,64 @@
+﻿@page "/RegistroCalificaciones"
+
+<form>
+	<div class="container">
+		<div class="card shadow-lg">
+			@*Header*@
+			<div class="card-header text-center bg-subheader">
+				<h3><strong>GradeBook</strong></h3>
+			</div>
+			@*Body*@
+			<div class="card-body">
+				<div class="text-center">
+					<h5 class="mb-5"><strong>Ingrese las calificaciones conseguidas por el estudiante Cristopher Marte</strong></h5>
+				</div>
+				<div class="row ms-1">
+					<div class="input-group-text">
+						@*Primer Parcial*@
+						<label class="form-label"><strong>Primer Parcial</strong></label>
+						<div class="col-1 ms-3">
+							<input type="number" class="form-control text-center" value="23" readonly />
+						</div>
+						@*Segundo Parcial*@
+						<label class="form-label ms-3"><strong>Segundo Parcial</strong></label>
+						<div class="col-1 ms-3">
+							<input type="number" class="form-control text-center" value="24" readonly />
+						</div>
+						@*Examen final*@
+						<label class="form-label ms-3"><strong>Examen final</strong></label>
+						<div class="col-1 ms-3">
+							<input type="number" class="form-control text-center" value="25" readonly />
+						</div>
+						@*Practicas*@
+						<label class="form-label ms-3"><strong>Pr&aacute;cticas</strong></label>
+						<div class="col-1 ms-3">
+							<input type="number" class="form-control text-center" value="23" readonly />
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-auto mt-4">
+						<div class="shadow-lg">
+							<table class="table-bordered text-center">
+								<thead class="bg-subheader text-white">
+									<tr>
+										<th>Nota acumulada</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><strong>95 A</strong></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+@code {
+
+}
