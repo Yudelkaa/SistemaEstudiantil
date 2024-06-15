@@ -1,0 +1,156 @@
+﻿@page "/Deudas"
+
+
+
+<div class="container mt-3">
+
+    <h2>Mis Deudas</h2>
+    @if (!mostrarTablaNueva)
+    {
+        <table class="table table-striped table-bordered justify-content mt-3">
+            <thead>
+                <tr class="text-center bg-header">
+                    <th>Cuota</th>
+                    <th>Estado</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var semestre in ListaDeudas)
+                {
+                    <tr class="text-center">
+                        <td>@semestre.Cuota</td>
+                        <td>@semestre.Estado</td>
+                        <td>
+                            <a class="btn btn-primary" @onclick="() => OnDeudaClick(semestre)" role="button">Ver Mi Deuda</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    @if (mostrarTablaNueva)
+    {
+        <h3>Detalles de la Deuda</h3>
+        <table class="table table-striped table-bordered justify-content mt-3">
+            <thead>
+                <tr class="text-center bg-header">
+                    <th>Fecha</th>
+                    <th>Periodo</th>
+                    <th>Monto</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detalle in ListaDetalle)
+                {
+                    <tr class="text-center">
+                        <td>@detalle.Fecha</td>
+                        <td>@detalle.Periodo</td>
+                        <td>@detalle.Monto</td>
+                        <td><button class="btn btn-primary" type="submit">Realizar pago</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button class="btn btn-secondary mt-3" @onclick="ClearSelectedDeuda">Cerrar</button>
+    }
+</div>
+
+@code {
+    bool mostrarTablaNueva = false;
+    string filtroEstadoPago = "";
+    Deudas selectedDeuda;
+
+    public class Link
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public bool IsActive { get; set; }
+    }
+
+    private List<Link> Links { get; set; } = new List<Link>()
+    {
+        new Link { Name = "Active", Url = "Deudas", IsActive = true },
+        new Link { Name = "Longer nav link", Url = "#" },
+        new Link { Name = "Link", Url = "Deudas" },
+    };
+
+    public List<Deudas> ListadeDeuda { get; set; } = new List<Deudas>
+    {
+        new Deudas { Cuota = "Cuota#1 Periodo 3-2024", Estado = "Pago Pendiente" },
+        new Deudas { Cuota = "Cuota#2 Periodo 3-2024", Estado = "Pago Pendiente" },
+        new Deudas { Cuota = "Cuota#3 Periodo 3-2024", Estado = "Pago pendiente" }
+    };
+
+    public List<Deudas_Detalle> ListaDetalle { get; set; } = new List<Deudas_Detalle>
+    {
+        new Deudas_Detalle { Fecha = "01/09/2024", Periodo = "Agosto 3-2024", Monto= 5000 },
+        // Agrega más detalles de ejemplo si es necesario
+    };
+
+    List<Deudas> ListaDeudas
+    {
+        get
+        {
+            if (string.IsNullOrWhiteSpace(filtroEstadoPago))
+            {
+                return ListadeDeuda;
+            }
+            else
+            {
+                return ListadeDeuda.Where(semestre => semestre.Estado.Equals(filtroEstadoPago, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+        }
+    }
+
+    public class Deudas
+    {
+        public string Cuota { get; set; }
+        public string Estado { get; set; }
+    }
+
+    public class Deudas_Detalle
+    {
+        public string Fecha { get; set; }
+        public string Periodo { get; set; }
+        public int Monto { get; set; }
+    }
+
+    private void OnLinkClick(Link selectedLink)
+    {
+        // Desactivar todos los enlaces
+        foreach (var link in Links)
+        {
+            link.IsActive = false;
+        }
+
+        // Activar el enlace seleccionado
+        selectedLink.IsActive = true;
+
+        // Mostrar u ocultar la tabla nueva basado en el enlace seleccionado
+        if (selectedLink.Name == "Longer nav link")
+        {
+            mostrarTablaNueva = true;
+        }
+        else
+        {
+            mostrarTablaNueva = false;
+        }
+    }
+
+    private void OnDeudaClick(Deudas selectedDeuda)
+    {
+        // Establecer la deuda seleccionada
+        this.selectedDeuda = selectedDeuda;
+        mostrarTablaNueva = true;
+    }
+
+    private void ClearSelectedDeuda()
+    {
+        // Limpiar la deuda seleccionada
+        selectedDeuda = null;
+        mostrarTablaNueva = false;
+    }
+}
