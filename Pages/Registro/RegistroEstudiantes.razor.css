@@ -1,0 +1,96 @@
+﻿body {
+}
+.text-primary {
+    color: #007bff;
+}
+
+.text-secondary {
+    color: #6c757d;
+}
+
+.text-tertiary {
+    color: #adb5bd;
+}
+
+/* Fondos */
+.bg-header {
+    background-color: #343a40; /* Fondo para encabezado */
+    color: white; /* Texto blanco */
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px; /* Espacio debajo del encabezado */
+}
+
+.bg-subheader {
+    background-color: #6c757d;
+    color: white;
+}
+
+.bg-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.bg-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.bg-tertiary {
+    background-color: #adb5bd;
+    color: black;
+}
+
+.bg-quaternary {
+    background-color: #e9ecef;
+    color: black;
+}
+
+.bg-quinary {
+    background-color: #f8f9fa;
+    color: black;
+}
+
+.bg-senary {
+    background-color: #343a40;
+    color: white;
+}
+
+.bg-septenary {
+    background-color: #495057;
+    color: white;
+}
+
+/* Formulario */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.form-control, .form-control-file, .form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="file"] {
+    padding: 5px;
+}
+
+select {
+    appearance: none;
+    background-color: #fff;
+}
