@@ -1,0 +1,171 @@
+﻿@page "/Registro/Estudiante"
+@inject NavigationManager navigationManager
+@using System.Collections.Generic
+
+
+<h1>Datos Personales</h1>
+
+<p class="text-primary">DEBE ESCRIBIR SU(S) NOMBRE(S) CON TILDE, DIERESIS, APOSTROFE Y GUION DONDE LOS LLEVES. </p>
+
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="nombre">Nombre (s): *</label>
+                <input type="text" id="nombre" class="form-control" placeholder="DIGITE SU NOMBRE">
+            </div>
+            <div class="col-md-6">
+                <label for="primerApellido">Primer Apellido: *</label>
+                <input type="text" id="primerApellido" class="form-control" placeholder="DIGITE SU PRIMER APELLIDO">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="segundoApellido">Segundo Apellido: *</label>
+                <input type="text" id="segundoApellido" class="form-control" placeholder="DIGITE SU SEGUNDO APELLIDO">
+            </div>
+            <div class="col-md-6">
+                <label for="tipoIdentificacion">Tipo Identificación: *</label>
+                <input type="text" id="tipoIdentificacion" class="form-control" placeholder="CEDULA">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="numeroIdentificacion">No. Identificación: *</label>
+                <input type="text" id="numeroIdentificacion" class="form-control" placeholder="DIGITE EL NÚMERO DEL DOCUMENTO DE IDENTIFICACIÓN">
+            </div>
+            <div class="col-md-6">
+                <label for="fechaNacimiento">Fecha Nacimiento: *</label>
+                <input type="date" id="fechaNacimiento" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="nacionalidad">Nacionalidad: *</label>
+                <select id="nacionalidad" class="form-control">
+                    <option>SELECCIONE SU NACIONALIDAD</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="paisNacimiento">País de Nacimiento: *</label>
+                <select id="paisNacimiento" class="form-control">
+                    <option>SELECCIONE SU PAÍS DE NACIMIENTO</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="ciudadNacimiento">Ciudad de Nacimiento: *</label>
+                <select id="ciudadNacimiento" class="form-control">
+                    <option>SELECCIONE SU CIUDAD DE NACIMIENTO</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="telefonoCelular">Teléfono Celular: *</label>
+                <input type="text" id="telefonoCelular" class="form-control" placeholder="DIGITE SU NÚMERO DE CELULAR">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="telefonoFijo">Teléfono Fijo: *</label>
+                <input type="text" id="telefonoFijo" class="form-control" placeholder="DIGITE SU TELÉFONO FIJO">
+            </div>
+            <div class="col-md-6">
+                <label for="correoElectronico">Correo Electrónico: *</label>
+                <input type="email" id="correoElectronico" class="form-control" placeholder="DIGITE SU CORREO ELECTRÓNICO">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="tipoCarrera">Tipo de Carrera: *</label>
+                <select id="tipoCarrera" class="form-control">
+                    <option>SELECCIONE EL TIPO DE CARRERA</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="recordNota">Importar Record de Nota:</label>
+                <input type="file" id="recordNota" class="form-control-file">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="actaNacimiento">Acta de Nacimiento Legalizada:</label>
+                <input type="file" id="actaNacimiento" class="form-control-file">
+            </div>
+            <div class="col-md-6">
+                <label for="certificadoMedico">Certificado Médico de Salud:</label>
+                <input type="file" id="certificadoMedico" class="form-control-file">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="calificacionesBachillerato">Récord de Calificaciones del Bachillerato:</label>
+                <input type="file" id="calificacionesBachillerato" class="form-control-file">
+            </div>
+            <div class="col-md-6">
+                <label for="certificacionBachiller">Certificación de Bachiller oficializado por MINERD:</label>
+                <input type="file" id="certificacionBachiller" class="form-control-file">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="fotografia">Fotografía 2x2:</label>
+                <input type="file" id="fotografia" class="form-control-file">
+            </div>
+            <div class="col-md-6">
+                <label for="tarjetaVacunacion">Tarjeta de vacunación (Odontología o Medicina):</label>
+                <input type="file" id="tarjetaVacunacion" class="form-control-file">
+            </div>
+        </div>
+    </form>
+
+    <h3>Accesibilidad</h3>
+    <div class="accesibilidad-container">
+        <p>
+            Si se encuentra en alguna situación de discapacidad, condición de salud física o mental, podrá completar la solicitud de seguimiento y/o apoyo oportuno llamando al Decanato de Estudiantes Unibe, a las unidades de Orientación, Consejería y Necesidades Específicas de Apoyo Educativo, mediante cita individual con el equipo de profesionales a cargo. Contactos: (809) 689-4111, ext 1154 y 1156. Correo electrónico: <a href="mailto:inclusion@unibe.edu.do">inclusion@unibe.edu.do</a>
+        </p>
+        <div class="form-group">
+            <input type="checkbox" id="confirmar" />
+            <label for="confirmar">Confirme que ha leído el texto. <span class="text-danger">*</span></label>
+        </div>
+        <p>
+            ¿Necesita alguna acomodación razonable para la toma del examen de admisión? Las acomodaciones razonables son ajustes específicos que tienen como objeto la accesibilidad en casos de situación de discapacidad. <span class="text-danger">*</span>
+        </p>
+        <div class="form-group">
+            <label>Opción:</label>
+            <div>
+                <input type="radio" id="si" name="accommodation" value="si" />
+                <label for="si">Sí</label>
+            </div>
+            <div>
+                <input type="radio" id="no" name="accommodation" value="no" />
+                <label for="no">No</label>
+            </div>
+        </div>
+    </div>
+
+    <h3>Datos de la cuenta</h3>
+    <div class="form-group">
+        <label for="password">Contraseña: <span class="text-danger">*</span></label>
+        <input type="password" id="password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="confirm-password">Repetir Contraseña: <span class="text-danger">*</span></label>
+        <input type="password" id="confirm-password" class="form-control" />
+    </div>
+    <div class="form-actions">
+        <button class="btn btn-primary">Crear Cuenta</button>
+        <button @onclick="NavegarALogin" class="btn btn-danger">Cancelar</button>
+    </div>
+</div>
+@code {
+    public void Registrar()
+    {
+        // Lógica de registro
+    }
+
+    public void NavegarALogin()
+    {
+        navigationManager.NavigateTo("/Ventana/Login");
+    }
+}

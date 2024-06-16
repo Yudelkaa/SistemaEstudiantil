@@ -1,0 +1,58 @@
+﻿@page "/Calificacion"
+
+
+<div class="container">
+    <header>
+        <h1>Universidad X - Portal De Profesores</h1>
+        <div class="profile">
+            <span>Juan Pérez</span>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Descripción General Del Profesor</h2>
+        <h3>Calificaciones Programación:</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Calificación</th>
+                    <th>Estado</th>
+                    <th>Publicar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var calificacion in calificaciones)
+                {
+                    <tr>
+                        <td>@calificacion.Nombre</td>
+                        <td>@calificacion.Nota?.ToString() ?? "-"</td>
+                        <td>@calificacion.Estado</td>
+                        <td><button @onclick="() => Publicar(calificacion)">✏️</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<Calificaciones> calificaciones = new List<Calificaciones>
+    {
+        new Calificaciones { Nombre = "Samuel Duran", Nota = 100, Estado = "Aprobada" },
+        new Calificaciones { Nombre = "Ruth Casilla", Nota = 69, Estado = "Reprobada" },
+        new Calificaciones { Nombre = "Bryan Ovalles", Nota = null, Estado = "Incompleto" }
+    };
+
+    private class Calificaciones
+    {
+        public string Nombre { get; set; }
+        public int? Nota { get; set; }
+        public string Estado { get; set; }
+    }
+
+    private void Publicar(Calificaciones calificacion)
+    {
+        // Implementar lógica de publicación aquí
+    }
+}

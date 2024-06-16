@@ -1,0 +1,80 @@
+﻿body {
+}
+.personal-info-container {
+    display: flex;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+
+.profile-icon img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.sidebar p {
+    margin: 10px 0;
+}
+
+.btn-edit {
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6a1b9a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px 5px 0 0;
+}
+
+    .header h2 {
+        margin: 0;
+    }
+
+.btn-back {
+    background-color: #5a5a5a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.info-content {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+    .info-row p {
+        margin: 0;
+    }

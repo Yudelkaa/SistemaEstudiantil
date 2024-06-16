@@ -1,0 +1,70 @@
+﻿@page "/DashBoard"
+
+<div class="student-dashboard">
+    <h2>Descripción General Del Estudiante</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Estadísticas De Rendimiento
+                </div>
+                <div class="card-body">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart purple">
+                            <path class="circle-bg"
+                                  d="M18 2.0845
+                                     a 15.9155 15.9155 0 0 1 0 31.831
+                                     a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle"
+                                  stroke-dasharray="75, 100"
+                                  d="M18 2.0845
+                                     a 15.9155 15.9155 0 0 1 0 31.831
+                                     a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">75%</text>
+                        </svg>
+                    </div>
+                    <p>Índice Promedio: 3.9</p>
+                    <p>Progreso En Asignaturas: 54/72</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Ultimas Calificaciones
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Teleprocesos Y Redes (L) - Sistemas: <span class="badge bg-success">95</span></li>
+                        <li>Teleprocesos Y Redes (T) - Sistemas: <span class="badge bg-success">95</span></li>
+                        <li>Contabilidad General - Bachiller: <span class="badge bg-success">93</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Comentarios
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>
+                            <strong>Alerta General:</strong> Pago de Semestre Realizado Con Éxito.
+                        </li>
+                        <li>
+                            <strong>Alerta General:</strong> Planificación De Semestre Guardado Para Ajustarlo Diríjase Hacia Asignaturas.
+                        </li>
+                        <li>
+                            <strong>Alerta Importante:</strong> Aún No Se Realiza La Planificación De Semestre Y Se Acerca La Fecha Límite Para Realizarla, Favor Revisar El Calendario Académico.
+                        </li>
+                        <li>
+                            <strong>Alerta General:</strong> Todas Las Asignaturas Fueron Publicadas Para Más Información Diríjase A La Sección De Calificaciones.
+                        </li>
+                    </ul>
+                    <button class="btn btn-warning">Todos Los Comentarios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
