@@ -1,0 +1,46 @@
+﻿@page "/"
+
+@page "/Ventana/Login"
+@inject NavigationManager navigationManager
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="row no-gutters">
+                    <div class="col-sm-6 bg-custom rounded-left">
+                        <div class="card h-100 image-card" style="background-color: #03045E;">
+                            <div class="card-body d-flex align-items-center justify-content-center">
+                                <img src="/login.png" alt="Descripción de la imagen" class="d-block mx-auto" style="width: 200px; margin-top: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 rounded-right">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+                                    <div class="move-down">
+                                        <div class="form-group mb-3 input-space">
+                                            <input type="text" class="form-control" id="usuario" placeholder="Usuario">
+                                        </div>
+                                        <div class="form-group mb-3 password-input">
+                                            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center mb-3">
+                                    <button type="button" class="btn btn-block btn-iniciar btn-redondeado">Iniciar Sesión</button>
+                                </div>
+                                <div class="form-group text-center">
+                                    <a href="/Registro/Estudiante" class="btn btn-block btn-registro btn-redondeado">Registrarse</a>
+                                </div>
+                                <div class="form-group text-center">
+                                    <label class="mt-4">¿Olvidó su contraseña?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
