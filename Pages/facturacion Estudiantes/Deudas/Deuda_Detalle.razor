@@ -1,0 +1,92 @@
+﻿@page "/D_Deuda"
+
+
+<div class="container mt-3">
+    <h2>Detalle de la Deuda</h2>
+    @if (!mostrarTablaNueva)
+    {
+
+        <table class="table table-striped table-bordered justify-content mt-3">
+            <thead>
+                <tr class="text-center bg-header">
+                    <th>Fecha</th>
+                    <th>Periodo</th>
+                    <th>Monto</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var semestre in ListaClasesFiltradas)
+                {
+                    <tr class="text-center">
+                        <td>@semestre.Fecha</td>
+
+                        <td>@semestre.Periodo</td>
+                        <td>@semestre.Monto</td>
+                        <td><button class="btn btn-primary" type="submit">Realizar pago</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    @if (mostrarTablaNueva)
+    {
+        <h3>Nueva Tabla</h3>
+        <table class="table table-striped table-bordered justify-content mt-3">
+            <thead>
+                <tr class="text-center bg-header">
+                    <th>Otro Dato</th>
+                    <th>Algo más</th>
+                    <th>Detalles</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Agrega aquí los datos para la nueva tabla -->
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    bool mostrarTablaNueva = false;
+    string filtroEstadoPago = "";
+
+
+
+
+
+
+    public List<Deudas_Detalle> ListaClases { get; set; } = new List<Deudas_Detalle>
+    {
+        new Deudas_Detalle { Fecha = "01/09/2024", Periodo = "Agosto 3-2024", Monto= 5000 },
+       
+    };
+
+    List<Deudas_Detalle> ListaClasesFiltradas
+    {
+        get
+        {
+            if (string.IsNullOrWhiteSpace(filtroEstadoPago))
+            {
+                return ListaClases;
+            }
+            else
+            {
+                return ListaClases.Where(semestre => semestre.Periodo.Equals(filtroEstadoPago, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+        }
+    }
+
+
+    public class Deudas_Detalle
+    {
+        public string Fecha { get; set; }
+        public string Periodo { get; set; }
+        public int Monto { get; set; }
+    }
+
+
+
+}
+

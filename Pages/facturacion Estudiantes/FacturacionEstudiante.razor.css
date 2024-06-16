@@ -1,0 +1,17 @@
+﻿.nav-link:hover {
+    background-color: #007bff; /* Cambia el color según tus preferencias */
+    color: white; /* Cambia el color del texto para mayor contraste */
+    border-radius: 20px;
+}
+
+.nav-link {
+    border-radius: 20px;
+}
+
+.nav {
+    /* Color del borde */
+    border-radius: 20px; /* Radio del borde */
+    padding: 10px; /* Espacio interno */
+    margin-bottom: 30px;
+    box-shadow: 0 0 16px 0 #0005;
+}
