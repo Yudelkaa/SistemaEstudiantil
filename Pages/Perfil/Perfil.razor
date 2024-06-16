@@ -1,0 +1,85 @@
+﻿@page "/Perfil"
+<div class="personal-info-container">
+    <div class="sidebar">
+        <div class="profile-icon">
+            <img src="Perfil.jpg" alt="Profile Icon" />
+        </div>
+        <p><strong class="text-primero">Matrícula</strong></p>
+        <p class="text-segundo">@student.Matricula</p>
+        <p><strong class="text-primero">Carrera</strong></p>
+        <p class="text-tercero">@student.Carrera</p>
+        <p><strong class="text-primero">Semestre Actual</strong></p>
+        <p class="text-tercero">@student.SemestreActual</p>
+        <p><strong class="text-primero">Índice Acumulado</strong></p>
+        <p class="text-tercero">@student.IndiceAcumulado</p>
+        <a class="btn btn-primary" href="/" role="button">Editar</a>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h2>Información Personal</h2>
+            <a class="btn btn-primary" href="/" role="button">Atras</a>
+        </div>
+        <div class="info-content">
+            <div class="info-row">
+                <p><strong class="text-primero">Nombre: </strong>@student.Nombre</p>
+                <p><strong class="text-primero">Apellido: </strong>@student.Apellido</p>
+            </div>
+            <div class="info-row">
+                <p><strong class="text-primero">Fecha de Nacimiento: </strong>@student.FechaNacimiento</p>
+            </div>
+            <div class="info-row">
+                <p><strong class="text-primero">Correo Personal: </strong>@student.CorreoPersonal</p>
+                <p><strong class="text-primero">Correo Institucional: </strong>@student.CorreoInstitucional</p>
+            </div>
+            <div class="info-row">
+                <p><strong class="text-primero">Teléfono: </strong>@student.Telefono</p>
+                <p><strong class="text-primero">Celular: </strong>@student.Celular</p>
+            </div>
+            <div class="info-row">
+                <p><strong class="text-primero">Dirección: </strong>@student.Direccion</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private Student student;
+
+    protected override void OnInitialized()
+    {
+        // Inicializar con datos de ejemplo
+        student = new Student
+            {
+                Matricula = "2023123456",
+                Carrera = "Ingeniería en Sistemas",
+                SemestreActual = "6",
+                IndiceAcumulado = "3.8",
+                Nombre = "Juan Francisco",
+                Apellido = "Arias Lopez",
+                FechaNacimiento = "28/06/2001",
+                CorreoPersonal = "fulanodetal@gmail.com",
+                CorreoInstitucional = "fulanito@universidad.edu",
+                Telefono = "(809)-123-4567",
+                Celular = "(849)-123-4567",
+                Direccion = "Calle Jose Contrera de Oscord Casa #5, Avenida Principal, Cenovi, Sabana Rey"
+            };
+    }
+    public class Student
+    {
+        public string Matricula { get; set; }
+        public string Carrera { get; set; }
+        public string SemestreActual { get; set; }
+        public string IndiceAcumulado { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string FechaNacimiento { get; set; }
+        public string CorreoPersonal { get; set; }
+        public string CorreoInstitucional { get; set; }
+        public string Telefono { get; set; }
+        public string Celular { get; set; }
+        public string Direccion { get; set; }
+    }
+
+
+}
