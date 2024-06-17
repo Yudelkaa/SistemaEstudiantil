@@ -15,7 +15,7 @@
 </nav>
 
 <div class="container mt-3">
-    @if (!mostrarTablaNueva && !MostrarDeudas)
+    @if (!mostrarTablaNueva && !MostrarDeudas && !MostrarHorario)
     {
         <div style="display:flex; align-items:center; justify-content:space-around">
             <div>
@@ -31,7 +31,7 @@
         </div>
         <table class="table table-striped table-bordered justify-content mt-3">
             <thead Style="background-color: darkblue;">
-                <tr class="text-center bg-header ">
+                <tr class="text-center bg-header">
                     <th class="text-white">Semestre</th>
                     <th class="text-white">Monto a pagar</th>
                     <th class="text-white">Saldo pendiente</th>
@@ -54,7 +54,7 @@
 
     @if (mostrarTablaNueva)
     {
-        <div style="display:flex; align-items:center; ">
+        <div style="display:flex; align-items:center;">
             <div>
                 <label class="">Filtrar por Semestre:</label>
             </div>
@@ -89,7 +89,7 @@
         </table>
     }
 
-    @if (MostrarDeudas && !mostrarTablaNueva || MostrarDeudas && mostrarTablaNueva)
+    @if (MostrarDeudas)
     {
         <div class="container mt-3">
             <table class="table table-striped table-bordered justify-content mt-3">
@@ -115,43 +115,49 @@
             </table>
         </div>
     }
+
+    @if (MostrarHorario)
+    {
+        <HorarioClases></HorarioClases>
+    }
 </div>
 
 @code {
     bool mostrarTablaNueva = false;
     bool MostrarDeudas = false;
+    bool MostrarHorario = false;
     string filtroEstadoPago = "";
     string filtroSemestre = "";
 
     private List<Link> Links { get; set; } = new List<Link>()
     {
-        new Link {id= 1, Name = "Estado de cuenta", Url = "/FacturacionEstudiante", IsActive = true },
-        new Link {id= 2, Name = "Historial de pago", Url = "/FacturacionEstudiante" },
-        new Link {id= 3, Name = "Patric", Url = "/FacturacionEstudiante" },
-        new Link {id= 4, Name = "Patric", Url = "/FacturacionEstudiante"},
-        new Link {id= 5, Name = "Deuda", Url = "/FacturacionEstudiante"},
-        new Link {id= 5, Name = "Horario de clases", Url = "/HorarioClases"},
+        new Link { id = 1, Name = "Estado de cuenta", Url = "/FacturacionEstudiante", IsActive = true },
+        new Link { id = 2, Name = "Historial de pago", Url = "/FacturacionEstudiante" },
+        new Link { id = 3, Name = "Patric", Url = "/FacturacionEstudiante" },
+        new Link { id = 4, Name = "Patric", Url = "/FacturacionEstudiante" },
+        new Link { id = 5, Name = "Deuda", Url = "/FacturacionEstudiante" },
+        new Link { id = 6, Name = "Horario de clases", Url = "/FacturacionEstudiante" },
     };
 
     public List<Deudas> ListaDeudas { get; set; } = new List<Deudas>
     {
         new Deudas { Cuota = "Cuota#1 Periodo 3-2024", Estado = "Pago Pendiente" },
-        new Deudas { Cuota = "Cuota#2 Periodo 3-2024", Estado = "Pago Pendiente"   },
-        new Deudas { Cuota = "Cuota#3 Periodo 3-2024", Estado = "Pago pendiente"  }
+        new Deudas { Cuota = "Cuota#2 Periodo 3-2024", Estado = "Pago Pendiente" },
+        new Deudas { Cuota = "Cuota#3 Periodo 3-2024", Estado = "Pago pendiente" }
     };
 
     public List<SemestreEstudiante> ListaClases { get; set; } = new List<SemestreEstudiante>
     {
         new SemestreEstudiante { Semestre = "001", Monto_pagar = 20000, Saldo_pendiente = 15344, Estado_pago = "Pendiente" },
-        new SemestreEstudiante { Semestre = "002", Monto_pagar = 32222, Saldo_pendiente = 0, Estado_pago = "Pagado"   },
-        new SemestreEstudiante { Semestre = "003", Monto_pagar = 17000, Saldo_pendiente = 0, Estado_pago = "Pagado"  }
+        new SemestreEstudiante { Semestre = "002", Monto_pagar = 32222, Saldo_pendiente = 0, Estado_pago = "Pagado" },
+        new SemestreEstudiante { Semestre = "003", Monto_pagar = 17000, Saldo_pendiente = 0, Estado_pago = "Pagado" }
     };
 
     public List<HistorialPagos> ListaHistorial { get; set; } = new List<HistorialPagos>
     {
-        new HistorialPagos { Semestre = "enero 3-2024", Monto = 50000 , MetodoPago = "Pago Pendiente" },
-        new HistorialPagos { Semestre = "febrero 3-2024", Monto = 80000 , MetodoPago = "Pago Pendiente"   },
-        new HistorialPagos { Semestre = "marzo 3-2024", Monto = 40000 , MetodoPago = "Pago Pendiente"  }
+        new HistorialPagos { Semestre = "enero 3-2024", Monto = 50000, MetodoPago = "Pago Pendiente" },
+        new HistorialPagos { Semestre = "febrero 3-2024", Monto = 80000, MetodoPago = "Pago Pendiente" },
+        new HistorialPagos { Semestre = "marzo 3-2024", Monto = 40000, MetodoPago = "Pago Pendiente" }
     };
 
     List<string> SemestresDisponibles => ListaHistorial.Select(h => h.Semestre).Distinct().ToList();
@@ -244,26 +250,26 @@
         if (selectedLink.id == 1)
         {
             mostrarTablaNueva = false;
+            MostrarDeudas = false;
+            MostrarHorario = false;
         }
-        if (selectedLink.id == 2)
+        else if (selectedLink.id == 2)
         {
             mostrarTablaNueva = true;
             MostrarDeudas = false;
+            MostrarHorario = false;
         }
         else if (selectedLink.id == 5)
         {
             MostrarDeudas = true;
             mostrarTablaNueva = false;
+            MostrarHorario = false;
         }
         else if (selectedLink.id == 6)
         {
-            MostrarDeudas = true;
-            mostrarTablaNueva = false;
-        }
-        else
-        {
-            mostrarTablaNueva = false;
             MostrarDeudas = false;
+            mostrarTablaNueva = false;
+            MostrarHorario = true;
         }
     }
 }
