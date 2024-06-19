@@ -1,85 +1,85 @@
 <div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">SistemaEstudiantil</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
+	<div class="container-fluid">
+		<a class="navbar-brand" href="">SistemaEstudiantil</a>
+		<button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</div>
 </div>
 
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Inicio
-            </NavLink>
-        </div>
-       
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/notificaciones">
-                <span class="bi bi-bell" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Notificaciones
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/Estudiante/VerCalificaciones">
-                <span class="bi bi-collection" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Calificaciones
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/reservaciones">
-                <span class="bi bi-archive-fill" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Reservaciones
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/ProgramacionAsignaturas">
-                <span class="bi bi-journal-bookmark-fill" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Asignatura
-            </NavLink>
-        </div>
-      
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/Retiro">
-                <span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Retiro
-            </NavLink>
-        </div>
+	<nav class="flex-column">
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+				<span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Inicio
+			</NavLink>
+		</div>
 
-      
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/Solicitudes">
-                <span class="bi bi-card-list" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Solicitudes
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/FacturacionEstudiante">
-                <span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Facturación
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/Docente/ConsultaCalificaciones">
-                <span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Docente
-            </NavLink>
-        </div>
-                <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/Admisor/DetallesSolicitud">
-                <span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Admisor
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/Admisor/HistorialSolicitudes">
-                <span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Historial maestro
-            </NavLink>
-        </div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/notificaciones">
+				<span class="bi bi-bell" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Notificaciones
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/Estudiante/VerCalificaciones">
+				<span class="bi bi-collection" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Calificaciones
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/reservaciones">
+				<span class="bi bi-archive-fill" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Reservaciones
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/ProgramacionAsignaturas">
+				<span class="bi bi-journal-bookmark-fill" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Asignatura
+			</NavLink>
+		</div>
+
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/Retiro">
+				<span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Retiro
+			</NavLink>
+		</div>
 
 
-    </nav>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/Solicitudes">
+				<span class="bi bi-card-list" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Solicitudes
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/FacturacionEstudiante">
+				<span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Facturación
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/Docente/ConsultaCalificaciones">
+				<span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Docente
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/Admisor/DetallesSolicitud">
+				<span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Admisor
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="/Admisor/HistorialSolicitudes">
+				<span class="bi bi-bag-x" aria-hidden="true" style="height: 40px; vertical-align: middle;"></span> Historial maestro
+			</NavLink>
+		</div>
+
+
+	</nav>
 </div>
 
 @code {
-    private bool collapseNavMenu = true;
+	private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+	private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+	private void ToggleNavMenu()
+	{
+		collapseNavMenu = !collapseNavMenu;
+	}
 }
